@@ -165,31 +165,34 @@ guess()
 4.6
 
 ```python
- 
+
 import random
-a = b = c = 10000
-i = j = 0
-while a:
-    num = random.randint(1,3)
-    num_car = random.randint(1,3)
-    if num == num_car:
-        i += 1
-    a -= 1
-while b:
-    num_car = random.randint(1,3)
-    while True:
-        num2 = random.randint(1,3)
-        if num2 == num_car:
-            continue
-        else:
-            break
-    nums = [num_car,num2]
-    num = random.choice(nums)
-    if num == num_car:
-        j += 1
-    b -= 1
-print('不能更换:{:.4f},能更换:{:.4f}'.format(i/c,j/c))
+times = eval(input("请输入你希望模拟的次数："))
+pick_first_n = 0
+pick_change_n = 0
+for i in range(times):
+    car = random.randint(0, 2)
+    pick_first = random.randint(0, 2) 
+    if  pick_first == car: 
+        pick_first_n += 1
+    else:
+        pick_change_n += 1 
+pick_first_percent = pick_first_n / times 
+pick_change_percent = pick_change_n / times 
+print("如果坚持初选，胜率为{:.2f}%".format(pick_first_percent * 100))
+print("如果改变初选，胜率为{:.2f}%".format(pick_change_percent * 100))
 ```
+4.21蒙特卡罗方法应用    
+分子模拟计算    
+1． 使用随机数发生器产生一个随机的分子构型。
+
+2． 对此分子构型的其中粒子坐标做无规则的改变，产生一个新的分子构型。
+
+3． 计算新的分子构型的能量。
+
+4． 比较新的分子构型于改变前的分子构型的能量变化，判断是否接受该构型。若新的分子构型能量低于原分子构型的能量，则接受新的构型，使用这个构型重复再做下一次迭代。 若新的分子构型能量高于原分子构型的能量，则计算玻尔兹曼因子，并产生一个随机数。若这个随机数大于所计算出的玻尔兹曼因子，则放弃这个构型，重新计算。 若这个随机数小于所计算出的玻尔兹曼因子，则接受这个构型，使用这个构型重复再做下一次迭代。
+
+5． 如此进行迭代计算，直至最后搜索出低于所给能量条件的分子构型结束。
 
 
 
