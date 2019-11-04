@@ -1,18 +1,18 @@
 def lock(str):
     alp = 'abcdefghijklmnopqrstuvwxyzabcABCDEFGHIJKLMNOPQRSTUVWXWZABC'
+    punct = ',.?!%"" '
     str2 = ''
     for n in range(len(str)):
-        if str[n] !=  ' ':
-            str2 += str.replace(str[n],alp[alp.find(str[n]) + 3])[n]
+        str2 += str.replace(str[n],alp[alp.find(str[n]) + 3])[n] if str[n] in alp else str[n]
     return str2
 
 
 def unlock(str):
     alp = 'abcdefghijklmnopqrstuvwxyzabcABCDEFGHIJKLMNOPQRSTUVWXWZABC'
+    punct = ',.?!%"" '
     str2 = ''
     for n in range(len(str)):
-        if str[n] !=  ' ':
-            str2 += str.replace(str[n],alp[alp.find(str[n]) - 3])[n]
+        str2 += str.replace(str[n],alp[alp.find(str[n]) - 3])[n] if str[n] in alp else str[n]
     return str2
 
 def test():
