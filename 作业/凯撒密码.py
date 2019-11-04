@@ -8,7 +8,6 @@ def lock(str):
 
 
 def unlock(str):
-    alp1 = 'CBAZWXWVUTSRQPONMLKJIHGFEDCBAcbazyxwvutsrqponmlkjihgfedcba'
     alp = 'abcdefghijklmnopqrstuvwxyzabcABCDEFGHIJKLMNOPQRSTUVWXWZABC'
     str2 = ''
     for n in range(len(str)):
