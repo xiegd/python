@@ -3,7 +3,7 @@ def calc():
         str_info = ''
         yuwen,math,English = 0,0,0
         yuwen_max,math_max,English_max = 0,0,0
-        yuwen_min,math_min,English_min = 0,0,0
+        yuwen_min,math_min,English_min = 100,100,100
         n = -1
         for i in fo.readlines():
             line = i.strip('\n').split(',')
@@ -15,12 +15,12 @@ def calc():
                 for a in line[1:]:
                     sum += eval(a)
                 str_info += i.strip('\n') + ',' + str(sum) + '\n'
-                yuwen_max = eval(line[1]) if yuwen < eval(line[1]) else yuwen_max
-                math_max = eval(line[2]) if math < eval(line[2]) else math_max
-                English_max = eval(line[3]) if English < eval(line[3]) else English_max
-                yuwen_min = eval(line[1]) if yuwen > eval(line[1]) else yuwen_min
-                math_min = eval(line[2]) if math > eval(line[2]) else math_min
-                English_min = eval(line[3]) if English > eval(line[3]) else English_min
+                yuwen_max = eval(line[1]) if yuwen_max < eval(line[1]) else yuwen_max
+                math_max = eval(line[2]) if math_max < eval(line[2]) else math_max
+                English_max = eval(line[3]) if English_max < eval(line[3]) else English_max
+                yuwen_min = eval(line[1]) if yuwen_min > eval(line[1]) else yuwen_min
+                math_min = eval(line[2]) if math_min > eval(line[2]) else math_min
+                English_min = eval(line[3]) if English_min > eval(line[3]) else English_min
                 yuwen += eval(line[1])
                 math += eval(line[2])
                 English += eval(line[3])
@@ -29,8 +29,8 @@ def calc():
         str_info += '平均分' + ',' + '{:.2f}'.format(yuwen/n) + ',' + '{:.2f}'.format(math/n) + ',' + '{:.2f}'.format(English/n) + '\n'
     return str_info
         
-
-fo = open('scoressss.csv','w',encoding= 'utf-8')
-fo.write(calc())
-fo.close()
+info = calc()
 print(calc())
+fo = open('score.csv','w',encoding= 'utf-8')
+fo.write(info)
+fo.close()
