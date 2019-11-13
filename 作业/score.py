@@ -31,7 +31,7 @@ def calc():
     return str_info,statistic
         
 info = calc()
-print(calc()[1])
+print(info[1])
 fo = open('score.csv','w',encoding= 'utf-8')
 fo.write(info[0])
 fo.close()
