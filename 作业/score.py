@@ -1,6 +1,7 @@
 def calc():
     with open('score.csv','r',encoding= 'utf-8') as fo:
         str_info = ''
+        statistic = '统计,语文,数学,英语\n'
         yuwen,math,English = 0,0,0
         yuwen_max,math_max,English_max = 0,0,0
         yuwen_min,math_min,English_min = 100,100,100
@@ -24,13 +25,13 @@ def calc():
                 yuwen += eval(line[1])
                 math += eval(line[2])
                 English += eval(line[3])
-        str_info += '最高分' + ',' + str(yuwen_max) + ',' + str(math_max) + ',' + str(English_max) + '\n'
-        str_info += '最低分' + ',' + str(yuwen_min) + ',' + str(math_min) + ',' + str(English_min) + '\n'
-        str_info += '平均分' + ',' + '{:.2f}'.format(yuwen/n) + ',' + '{:.2f}'.format(math/n) + ',' + '{:.2f}'.format(English/n) + '\n'
-    return str_info
+        statistic += '最高分' + ',' + str(yuwen_max) + ',' + str(math_max) + ',' + str(English_max) + '\n'
+        statistic += '最低分' + ',' + str(yuwen_min) + ',' + str(math_min) + ',' + str(English_min) + '\n'
+        statistic += '平均分' + ',' + '{:.2f}'.format(yuwen/n) + ',' + '{:.2f}'.format(math/n) + ',' + '{:.2f}'.format(English/n) + '\n'
+    return str_info,statistic
         
 info = calc()
-print(calc())
+print(calc()[1])
 fo = open('score.csv','w',encoding= 'utf-8')
-fo.write(info)
+fo.write(info[0])
 fo.close()
