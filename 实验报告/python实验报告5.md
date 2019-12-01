@@ -17,63 +17,130 @@
 ## 实验代码：
 
 1. 程序练习题5.1
-提示：修改上次实验4的代码，用函数替代程序中输出部分。
+
+  ```python
+  def tian(width,height):
+      x,y = 0,0
+      for i in range(height + 1):
+          if i%5 == 0:
+              #print(height)
+              for i in range(width + 1):
+                  print('+'if y%5 == 0 else '-',end = ''if i < width else '\n')
+                  y += 1
+              y = 0
+          if i%5 != 0:
+              for i in range(width + 1):
+                  print('|'if y%5 == 0 else ' ',end = ''if i < width else '\n')
+                  y += 1
+              y = 0
+  tian(20,20)
+  ```
+
+  
 
 2. 程序练习题5.2
-提示：
-def isOdd(n):
-  如果n是奇数：
-     return True
-  否则：
-     return False
 
-#测试函数
-def main():
-   while True:
-       n = int( input(“请输入一个整数：”)
-       if isOdd(n):
-          输出”n是偶数”
+```python
+  def isOdd(num):
+       if num%2 == 0:
+          return False
        else:
-          输出”n是奇数”
-
-#运行测试函数，测试函数调用isOdd()函数
-main()
+           return True
+   print(isOdd(13))
+   ```
+   
+   
 
 3. 程序练习题5.3
-提示：使用eval()函数
+
+  ```python
+  def isNum(num):
+      return True if type(num) == type(1) or type(num) == type(1.1) or type(num) == type(1+2j) else False
+  number = eval(input())
+  print(isNum(number))
+  ```
+
+  
 
 4. 程序练习题5.4
-提示：参考教材129页实例，在函数的参数中使用带”*”号的参数。
+
+  ```python
+  def multi(num,nums):
+      for n in nums:
+          num *= n
+      return num
+  numlist = eval(input())
+  print(type(numlist))
+  print(multi(numlist[0],numlist[1:]))
+  ```
+
+  
 
 5. 程序练习题5.5
-提示：下面的程序用来判断整数n是否为质数，在此基础上加上异常处理。
-def isPrime(n):
-    for k in range(2,n):
-       if n%k == 0:
-			return False
-	return True
+
+  ```python
+  def isPrime(num):
+      for n in range(2,num):
+          if num%n == 0:
+              return False
+              break
+      else:
+          return True
+  number = eval(input())
+  print(isPrime(number))  
+  ```
+
+  
 
 6. 斐波拉契数列。
-Fabric数列描述如下：
-F(n)={■(■(1&                                     n=1)@■(1&                                     n=2)@■(F(n-1)+F(n-2)&n>2))┤
-编写Fabric函数程序，用递归实现。
+
+  ```python
+  def Fabric(num1,num2):
+      print(num1,num2,end = ' ')
+      global n
+      num1 += num2
+      num2 += num1
+  
+  
+      n += 1
+      return Fabric(num1,num2) if n <10 else 'haha'
+      
+  n = 1
+  Fabric(1,1)
+  ```
+
+  
 
 7. 程序练习题5.7
-提示：n个盘子的递归解法如下：
-step1: 从A柱移动n-1个盘子到B柱，借助C柱
-step2: 移动A柱最后一个盘子到C柱
-step3: 移动B柱的n-1个盘子到C柱，借助A柱
-递归的边界就是n=1时，可以直接移动盘子。注意的是在Step1此时C柱是没有盘子；在step2此时仅移动一个盘子，可以直接移动；在Step3此时A柱是空的。
+
+  ```python
+  def move():
+      #i = 0
+      column1 = list(range(1,65))
+      column2 = []
+      column3 = []
+      for i in range(column1): 
+          column3.append(column1.pop(i))
+  
+  
+  
+  def judge():
+      
+  move()
+  
+  ```
+
+  
 
 8. 七段数码管问题。
-在教材实例7的基础上改写代码，实现以下要求：
-1）日期的每一个数字用不同颜色表示。
-提示：0-9共有10个数字，对应10种不同颜色表示：'red', 'blue', 'yellow', 'gold', 'violet', 'purple', 'green', 'darkgreen', 'grey', 'orange'；只需要修改drawDigit()函数，添加功能使之实现每一个数字用不同颜色表示。
-2）数码管的每一段用不同颜色表示。
-提示：方法一：修改drawDigit()函数；方法二：修改drawLine()函数。
+  在教材实例7的基础上改写代码，实现以下要求：
+  1）日期的每一个数字用不同颜色表示。
+  提示：0-9共有10个数字，对应10种不同颜色表示：'red', 'blue', 'yellow', 'gold', 'violet', 'purple', 'green', 'darkgreen', 'grey', 'orange'；只需要修改drawDigit()函数，添加功能使之实现每一个数字用不同颜色表示。
+  2）数码管的每一段用不同颜色表示。
+  提示：方法一：修改drawDigit()函数；方法二：修改drawLine()函数。
 
 9. 修改实例代码18.1，使koch曲线反向绘制，从直线开始，中间部分向下方绘制。
-提示：参考教材实例8
+  提示：参考教材实例8
 
 
 
